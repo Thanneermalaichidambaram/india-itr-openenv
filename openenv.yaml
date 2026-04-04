@@ -1,0 +1,49 @@
+spec_version: 1
+name: india-itr-openenv
+type: space
+runtime: fastapi
+app: server.app:app
+port: 7860
+
+description: >
+  RL environment for Indian income tax return (ITR) filing.
+  Three tasks: Form 16 parsing (easy), deduction identification
+  and regime selection (medium), capital gains with CII indexation (hard).
+author: IndiaITR Team
+license: MIT
+tags: [openenv, india, tax, legal, financial, rl]
+
+tasks:
+  - id: task1_parse
+    name: Form 16 document parsing
+    difficulty: easy
+    max_turns: 20
+    reward_range: [-1.0, 1.0]
+    baseline_score: 0.82
+
+  - id: task2_deduct
+    name: Deduction identification and regime selection
+    difficulty: medium
+    max_turns: 20
+    reward_range: [-1.0, 1.0]
+    baseline_score: 0.67
+
+  - id: task3_capgains
+    name: Capital gains with CII indexation
+    difficulty: hard
+    max_turns: 25
+    reward_range: [-1.0, 1.0]
+    baseline_score: 0.51
+
+observation_space:
+  type: structured
+  schema: models.ITRObservation
+
+action_space:
+  type: structured
+  schema: models.ITRAction
+  discriminator: action_type
+
+runtime_requirements:
+  python: ">=3.10"
+  gpu_required: false

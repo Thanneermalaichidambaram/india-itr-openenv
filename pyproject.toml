@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-india_itr_openenv"
+version = "1.0.0"
+description = "OpenEnv RL environment for Indian Income Tax Return filing"
+requires-python = ">=3.10"
+dependencies = [
+    "openenv-core[core]>=0.2.2",
+    "numpy>=1.26",
+    "python-dateutil>=2.9",
+    "gradio>=5.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+server = "india_itr_openenv.app:main"
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+    "india_itr_openenv",
+    "india_itr_openenv.server",
+    "india_itr_openenv.env",
+    "india_itr_openenv.graders",
+    "india_itr_openenv.tasks",
+]
+
+[tool.setuptools.package-dir]
+"india_itr_openenv" = "."
+"india_itr_openenv.server" = "server"
+"india_itr_openenv.env" = "env"
+"india_itr_openenv.graders" = "graders"
+"india_itr_openenv.tasks" = "tasks"

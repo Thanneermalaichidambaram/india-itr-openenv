@@ -1,0 +1,7 @@
+openenv-core[core]>=0.2.2
+pydantic>=2.5
+uvicorn>=0.24.0
+numpy>=1.26
+python-dateutil>=2.9
+requests>=2.31.0
+gradio>=5.0
