@@ -151,10 +151,19 @@ pip install -r requirements.txt
 # Start server
 uvicorn server.app:app --host 0.0.0.0 --port 7860
 
-# In another terminal — run inference
-export HF_TOKEN=your_token
-export MODEL_NAME=Qwen/Qwen2.5-72B-Instruct
+# In another terminal — run inference (OpenAI, default)
+export HF_TOKEN=sk-...          # your OpenAI API key
+python inference.py
+
+# Override model or endpoint
+export MODEL_NAME=gpt-4o
+export API_BASE_URL=https://api.openai.com/v1
+python inference.py
+
+# HuggingFace router alternative
+export HF_TOKEN=hf_...
 export API_BASE_URL=https://router.huggingface.co/v1
+export MODEL_NAME=Qwen/Qwen2.5-72B-Instruct
 python inference.py
 ```
 
@@ -184,13 +193,13 @@ with IndiaITRClient("http://localhost:7860") as env:
 
 ## Baseline Scores
 
-Run with `MODEL_NAME=gpt-4o`, `seed=42`:
+Run with `MODEL_NAME=gpt-4.1-mini`, `seed=42`:
 
 | Task | Score | Notes |
 |------|-------|-------|
-| Task 1 — Form 16 Parsing | **0.82** | Strong performance on structured document reading |
-| Task 2 — Deductions & Regime | **0.67** | Metro/non-metro HRA errors drag score down |
-| Task 3 — Capital Gains | **0.51** | Finance Act 2023 date trap catches most models |
+| Task 1 — Form 16 Parsing | **1.000** | Perfect score — step-guarded field extraction order |
+| Task 2 — Deductions & Regime | **0.787** | Auto regime selection via tax slab computation |
+| Task 3 — Capital Gains | **0.51+** | Finance Act 2023 date trap; arithmetic evaluator fixes JSON errors |
 
 ---
 
