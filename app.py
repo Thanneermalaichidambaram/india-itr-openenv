@@ -7,8 +7,14 @@ Gradio UI is mounted at /ui path but also served at root via custom route.
 import gradio as gr
 import json
 import uvicorn
+from fastapi.responses import RedirectResponse
 
 from server.app import app as fastapi_app
+
+# HF Spaces hits /web for the UI iframe — redirect to root where Gradio lives
+@fastapi_app.get("/web")
+def web_ui():
+    return RedirectResponse(url="/")
 
 # ---------------------------------------------------------------------------
 # Task info
@@ -136,7 +142,6 @@ with gr.Blocks(title="IndiaITR-OpenEnv") as demo:
 # ---------------------------------------------------------------------------
 
 app = gr.mount_gradio_app(fastapi_app, demo, path="/")
-app = gr.mount_gradio_app(app, demo, path="/web")  # HF Spaces iframe path
 
 def main():
     uvicorn.run(app, host="0.0.0.0", port=7860)
