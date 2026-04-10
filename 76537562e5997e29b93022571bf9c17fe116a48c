@@ -1,0 +1,24 @@
+app.py
+  619a62fd37fb507f 139
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "76537562e5997e29b93022571bf9c17fe116a48c",
+  "prompts": {
+    "619a62fd37fb507f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0972877-a375-4589-827f-71361ae0a9c2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Thanneermalai",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/4da0fb368596630c56ed617223ede5849b15a6661a1a36643faf94e3cc5943af"
+    }
+  }
+}
