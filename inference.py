@@ -27,7 +27,8 @@ from openai import OpenAI
 HF_TOKEN = os.getenv("HF_TOKEN")
 if HF_TOKEN is None:
     raise ValueError("HF_TOKEN environment variable is required")
-API_KEY = HF_TOKEN
+# OPENAI_API_KEY takes priority (local OpenAI usage); falls back to HF_TOKEN (HF router / Spaces)
+API_KEY = os.getenv("OPENAI_API_KEY") or HF_TOKEN
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4.1-mini")
 LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
