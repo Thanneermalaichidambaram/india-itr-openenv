@@ -136,6 +136,7 @@ with gr.Blocks(title="IndiaITR-OpenEnv") as demo:
 # ---------------------------------------------------------------------------
 
 app = gr.mount_gradio_app(fastapi_app, demo, path="/")
+app = gr.mount_gradio_app(app, demo, path="/web")  # HF Spaces iframe path
 
 def main():
     uvicorn.run(app, host="0.0.0.0", port=7860)
