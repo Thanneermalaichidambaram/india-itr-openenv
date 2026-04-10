@@ -164,7 +164,7 @@ class IndiaITREnvironment:
     def final_grade(self) -> float:
         """Compute final task score via the appropriate grader."""
         if self._case is None or self._obs is None:
-            return 0.0
+            return 0.001
 
         if self._task_id == "task1_parse":
             from graders.task1_grader import Task1Grader
@@ -197,7 +197,7 @@ class IndiaITREnvironment:
             ]
             return Task3Grader().grade(agent_assets, self._case)
 
-        return 0.0
+        return 0.001
 
     # ------------------------------------------------------------------
     # Action execution

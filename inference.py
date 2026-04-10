@@ -691,7 +691,7 @@ def run_task(client: OpenAI, task_config: Dict) -> Dict:
             score = env.grade()
         except Exception:
             score = sum(rewards) / max(len(rewards), 1) / 0.30
-        score = min(max(score, 0.0), 1.0)
+        score = min(max(score, 0.001), 0.999)
         success = score >= SUCCESS_SCORE_THRESHOLD
 
     except Exception as e:
