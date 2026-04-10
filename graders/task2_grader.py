@@ -37,4 +37,4 @@ class Task2Grader:
         tax_error = abs(submission.tax_payable - true_tax) / max(abs(true_tax), 1.0)
         tax_score = max(0.0, 1.0 - tax_error) * 0.25
 
-        return round(deduct_score + regime_score + tax_score, 3)
+        return round(min(max(deduct_score + regime_score + tax_score, 0.001), 0.999), 3)

@@ -17,7 +17,7 @@ class Task3Grader:
         case: CaseFile,
     ) -> float:
         if not case.assets:
-            return 0.0
+            return 0.001
 
         per_asset_scores = []
         rule_correct_count = 0
@@ -55,4 +55,4 @@ class Task3Grader:
         rule_application_score = rule_correct_count / len(case.assets)
 
         final = 0.70 * mean_asset_score + 0.30 * rule_application_score
-        return round(final, 3)
+        return round(min(max(final, 0.001), 0.999), 3)

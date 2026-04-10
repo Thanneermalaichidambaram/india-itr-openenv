@@ -100,4 +100,4 @@ class Task1Grader:
             if agent_detected_tds_mismatch == true_tds_mismatch:
                 reconcile_score += 0.20
 
-        return round(field_score + reconcile_score, 3)
+        return round(min(max(field_score + reconcile_score, 0.001), 0.999), 3)
