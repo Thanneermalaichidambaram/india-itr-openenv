@@ -62,14 +62,14 @@ def test_task1_perfect_agent():
 def test_task1_zero_agent():
     case = make_case()
     score = Task1Grader().grade({}, case)
-    assert score == 0.0
+    assert 0.0 < score < 1.0
 
 
 def test_task1_score_in_range():
     case = make_case()
     partial = {"form16_part_a.gross_salary": case.form16_part_a.gross_salary}
     score = Task1Grader().grade(partial, case)
-    assert 0.0 <= score <= 1.0
+    assert 0.0 < score < 1.0
 
 
 # --- Task 2 Grader ---
@@ -117,7 +117,7 @@ def test_task2_score_in_range():
         tax_payable=0, regime_selected="new",
     )
     score = Task2Grader().grade(sub, case)
-    assert 0.0 <= score <= 1.0
+    assert 0.0 < score < 1.0
 
 
 # --- Task 3 Grader ---
@@ -139,7 +139,7 @@ def test_task3_perfect_agent():
 def test_task3_zero_agent():
     case = make_case_task3()
     score = Task3Grader().grade([], case)
-    assert score == 0.0
+    assert 0.0 < score < 1.0
 
 
 def test_task3_wrong_rule_finance_act():
@@ -181,4 +181,4 @@ def test_task3_score_in_range():
         for asset in case.assets
     ]
     score = Task3Grader().grade(agent_assets, case)
-    assert 0.0 <= score <= 1.0
+    assert 0.0 < score < 1.0

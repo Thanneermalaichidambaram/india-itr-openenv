@@ -284,12 +284,13 @@ class IndiaITREnvironment:
         if action.tax_payable < 0:
             errors.append("tax_payable cannot be negative")
 
-        # Score the submission
-        grade = self.final_grade()
-        r = reward_module.REWARDS["submit_pass"] * grade
-
+        # Update draft with submission values before grading
         obs.current_draft.total_income = action.total_income
         obs.current_draft.tax_payable = action.tax_payable
         obs.current_draft.regime_selected = action.regime_selected
+
+        # Score the submission
+        grade = self.final_grade()
+        r = reward_module.REWARDS["submit_pass"] * grade
 
         return r, f"Submitted ITR. Final grade: {grade:.3f}", errors
