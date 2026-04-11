@@ -1,0 +1,28 @@
+inference.py
+  fcc5591f92469f18 72
+tests/test_graders.py
+  fcc5591f92469f18 65,72,120,142,184
+env/environment.py
+  fcc5591f92469f18 287,292-294
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "7468052140c5c41ba18dfb79e1ea14ad5e2e1b73",
+  "prompts": {
+    "fcc5591f92469f18": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1e4d638-e4b1-4c4b-b417-772365e35b4f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Thanneermalai",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 10,
+      "accepted_lines": 11,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/7cfdde40ef6ed0ede38892588b432285ed5a43440428324dc5f4e62716a9a17d"
+    }
+  }
+}
